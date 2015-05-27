@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency             'refinerycms-core',           '~> 3.0.0'
   s.add_dependency             'acts_as_indexed',            '~> 0.8.0'
   s.add_dependency             'actionview-encoded_mail_to', '~> 1.0.5'
+  s.add_dependency             'friendly_id',                '~> 5.1.0'
 
   # Development dependencies (usually used for testing)
   s.add_development_dependency 'refinerycms-testing', '~> 3.0.0'

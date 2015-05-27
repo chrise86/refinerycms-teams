@@ -1,6 +1,8 @@
 module Refinery
   module Teams
     class Team < Refinery::Core::BaseModel
+      extend FriendlyId
+
       self.table_name = 'refinery_teams'
 
       translates :job_title, :body
@@ -18,6 +20,8 @@ module Refinery
       scope :published, -> { where :draft => false }
 
       default_scope { order(position: :asc) }
+
+      friendly_id :fullname, use: [:slugged, :finders]
 
       class << self
         def uncategorized

@@ -1,39 +1,40 @@
-<ul class='search_list'>
-  <li class='not_a_link'>
-    <%= render "/refinery/admin/search", :url => request.path %>
-  </li>
-</ul>
+<div class="item active">
+  <a class="active title">
+    <i class="dropdown icon"></i>
+    <%= t('.teams.title') %>
+  </a>
 
-<ul class='collapsible_menu'>
-  <li class='not_a_link'>
-    <%= link_to t('.teams.title'), '#',
-                 :class => 'page_copy_icon' %>
-  </li>
-  <li>
-    <%= link_to t('.teams.manage'), refinery.teams_admin_teams_path,
-                 :class => 'page_icon' %>
-  </li>
-  <li>
-    <%= link_to t('.teams.uncategorized'), refinery.uncategorized_teams_admin_teams_path,
-                :class => 'page_icon' %>
-  </li>
-  <li>
-     <%= link_to t('.teams.new'), refinery.new_teams_admin_team_path,
-                 :class => 'page_add_icon' %>
-  </li>
-</ul>
+  <div class="active content">
+    <div class="menu sub-actions">
+      <%= link_to t('.teams.manage'), refinery.teams_admin_teams_path, class: 'item' %>
+      <%= link_to t('.teams.uncategorized'), refinery.uncategorized_teams_admin_teams_path, class: 'item' %>
+      <%= link_to semantic_icon('write', text: t('.teams.new')), refinery.new_teams_admin_team_path, class: 'item' %>
+      <% if !searching? && ::Refinery::Teams::Admin::TeamsController.sortable? && ::Refinery::Teams::Team.many? %>
+        <%= link_to t('.reorder', :what => "Teams"),
+                     refinery.teams_admin_teams_path,
+                     :id => "reorder_action",
+                     :class => "reorder_icon item" %>
 
-<ul class='collapsible_menu'>
-  <li class='not_a_link'>
-    <%= link_to t('.categories.title'), '#',
-                :class => 'folder_icon' %>
-  </li>
-  <li>
-    <%= link_to t('.categories.manage'), refinery.teams_admin_categories_path,
-                :class => 'folder_edit_icon' %>
-  </li>
-  <li>
-    <%= link_to t('.categories.new'), refinery.new_teams_admin_category_path,
-                :class => 'folder_add_icon' %>
-  </li>
-</ul>
+        <%= link_to t('.reorder_done', :what => "Teams"),
+                     refinery.teams_admin_teams_path,
+                     :id => "reorder_action_done",
+                     :style => "display: none;",
+                     :class => "reorder_icon item" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="item active">
+  <a class="title">
+    <i class="dropdown icon"></i>
+    <%= t('.categories.title') %>
+  </a>
+
+  <div class="content">
+    <div class="menu sub-actions">
+      <%= link_to t('.categories.manage'), refinery.teams_admin_categories_path, class: 'item' %>
+      <%= link_to t('.categories.new'), refinery.new_teams_admin_category_path, class: 'item' %>
+    </div>
+  </div>
+</div>

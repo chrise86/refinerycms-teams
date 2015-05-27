@@ -1,7 +1,7 @@
-<section id='records'>
-  <%= render 'records' %>
-</section>
-<aside id='actions'>
-  <%= render 'actions' %>
-</aside>
+<% content_for :subnav do %>
+  <%= render '/refinery/teams/admin/submenu' %>
+<% end %>
+
+<%= render 'records' %>
+
 <%= render '/refinery/admin/make_sortable', :tree => false if !searching? and ::Refinery::Teams::Admin::TeamsController.sortable? and ::Refinery::Teams::Team.many? %>
