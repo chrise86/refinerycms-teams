@@ -22,7 +22,7 @@ module Refinery
         private
           def team_params
             params.require(:team).permit(
-              :fullname, :job_title, :body, :photo_id, :email, :draft,
+              :fullname, :job_title, :body, :photo_id, :email, :draft, :qualifications,
               category_ids: []
             )
           end

@@ -1,5 +1,6 @@
 <%= form_for [refinery, :teams_admin, @category],
-             :url => (refinery.teams_admin_category_path(@category) if @category.persisted?) do |f| %>
+             :url => (refinery.teams_admin_category_path(@category) if @category.persisted?),
+             html: { class: 'ui segment fluid form' } do |f| %>
 
   <%= render '/refinery/admin/error_messages',
               :object => @category,

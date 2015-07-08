@@ -1,4 +1,4 @@
-<%= form_for [refinery, :teams_admin, @team] do |f| -%>
+<%= form_for [refinery, :teams_admin, @team], html: { class: 'ui segment fluid form' } do |f| -%>
   <%= render '/refinery/admin/error_messages',
               :object => @team,
               :include_object_name => true %>
@@ -7,8 +7,13 @@
               :current_locale => Globalize.locale %>
 
   <div class='field'>
-    <%= f.label :fullname -%>
+    <%= f.label :fullname, 'Full name' -%>
     <%= f.text_field :fullname, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :qualifications -%>
+    <%= f.text_field :qualifications, :class => 'larger widest' -%>
   </div>
 
   <div class='field'>
@@ -54,8 +59,10 @@
   </div>
 
   <div class='field'>
-    <%= f.label :draft -%>
-    <%= f.check_box :draft -%>
+    <div class="ui checkbox">
+      <%= f.check_box :draft -%>
+      <%= f.label :draft -%>
+    </div>
   </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,
