@@ -12,7 +12,7 @@ en:
             new: Add new category
           teams:
             title: Teams
-            manage: Manage teams
+            manage: Manage team members
             new: Add new team member
             uncategorized: Uncategorized team member
         categories:

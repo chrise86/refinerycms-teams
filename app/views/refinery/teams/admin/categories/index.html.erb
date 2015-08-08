@@ -1,4 +1,8 @@
-<section id='records'>
+<% content_for :subnav do %>
+  <%= render '/refinery/teams/admin/submenu' %>
+<% end %>
+
+<section id='records' class="ui segment">
   <% if @categories.any? %>
     <%= render "sortable_list" %>
   <% else %>
@@ -12,10 +16,6 @@
       </p>
     <% end %>
   <% end %>
-</section>
-
-<section id='actions'>
-  <%= render 'actions' %>
 </section>
 
 <%= render '/refinery/admin/make_sortable', options: {tree: true, replaceContentsAfterUpdate: true} if @categories.many? -%>

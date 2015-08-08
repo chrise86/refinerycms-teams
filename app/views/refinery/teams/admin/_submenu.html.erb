@@ -4,23 +4,23 @@
     <%= t('.teams.title') %>
   </a>
 
-  <div class="active content">
+  <div class="content<%= request.path =~ /teams\/teams/ ? ' active' : nil %>">
     <div class="menu sub-actions">
-      <%= link_to t('.teams.manage'), refinery.teams_admin_teams_path, class: 'item' %>
-      <%= link_to t('.teams.uncategorized'), refinery.uncategorized_teams_admin_teams_path, class: 'item' %>
-      <%= link_to semantic_icon('write', text: t('.teams.new')), refinery.new_teams_admin_team_path, class: 'item' %>
-      <% if !searching? && ::Refinery::Teams::Admin::TeamsController.sortable? && ::Refinery::Teams::Team.many? %>
-        <%= link_to t('.reorder', :what => "Teams"),
+      <%= active_link_to t('.teams.manage'), refinery.teams_admin_teams_path, class: 'item' %>
+      <%= active_link_to t('.teams.uncategorized'), refinery.uncategorized_teams_admin_teams_path, class: 'item' %>
+      <%= active_link_to semantic_icon('write', text: t('.teams.new')), refinery.new_teams_admin_team_path, class: 'item' %>
+      <%# if !searching? && ::Refinery::Teams::Admin::TeamsController.sortable? && ::Refinery::Teams::Team.many? %>
+        <%#= link_to t('.reorder', :what => "Teams"),
                      refinery.teams_admin_teams_path,
                      :id => "reorder_action",
                      :class => "reorder_icon item" %>
 
-        <%= link_to t('.reorder_done', :what => "Teams"),
+        <%#= link_to t('.reorder_done', :what => "Teams"),
                      refinery.teams_admin_teams_path,
                      :id => "reorder_action_done",
                      :style => "display: none;",
                      :class => "reorder_icon item" %>
-      <% end %>
+      <%# end %>
     </div>
   </div>
 </div>
@@ -31,10 +31,10 @@
     <%= t('.categories.title') %>
   </a>
 
-  <div class="content">
+  <div class="content<%= request.path =~ /teams\/categories/ ? ' active' : nil %>">
     <div class="menu sub-actions">
-      <%= link_to t('.categories.manage'), refinery.teams_admin_categories_path, class: 'item' %>
-      <%= link_to t('.categories.new'), refinery.new_teams_admin_category_path, class: 'item' %>
+      <%= active_link_to t('.categories.manage'), refinery.teams_admin_categories_path, class: 'item', active: :exclusive %>
+      <%= active_link_to t('.categories.new'), refinery.new_teams_admin_category_path, class: 'item' %>
     </div>
   </div>
 </div>
